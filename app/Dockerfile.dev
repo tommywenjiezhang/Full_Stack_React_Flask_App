@@ -13,4 +13,5 @@ COPY ./ /app
 ENV FLASK_APP=app
 ENV FLASK_ENV=development
 ENV SQLALCHEMY_DATABASE_URI=mysql+mysqlconnector://root:root@db:3306/citiesData
+ENV SECRET_KEY=ZHANG
 CMD ["python", "wsgi.py"]

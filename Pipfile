@@ -6,7 +6,17 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+
+flask = "*"
+sqlalchemy = "*"
+flask-sqlalchemy = "*"
+python-dotenv = "*"
+mysql-connector-python = "*"
+marshmallow = "*"
+flask-cors = "*"
+flask-restful = "*"
 pytest = "*"
+
 
 [requires]
 python_version = "3.8"
