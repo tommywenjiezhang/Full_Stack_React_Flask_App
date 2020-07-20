@@ -10,7 +10,6 @@ def create_app(test_config=None):
 
     app.config.from_object('app.config.Config')
     app.secret_key = "zhang"
-=======
     if test_config == None:
         app.config.from_object('app.config.Config')
     else:
