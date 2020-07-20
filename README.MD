@@ -1,6 +1,1 @@
-# Web Assignment Part 1
-## Screenshots
-### Database
-![Database](screenshots/database.png)
-### Postman
-![Postman](screenshots/postman.png)
+# Full Stack Flask App

@@ -31,16 +31,9 @@ class CityView extends Component {
         return (
             <div className="card">
                 <div className='row'>
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                         <img className="img-fluid" src={url}/>
                         <h1 className="card-title">{city.cityName}</h1>
-                        <button name="delete" key={city.id} className="btn btn-danger" onClick={()=>{
-                             delete_city(city.id)
-                        }}>
-                            delete
-                        </button>
-                    </div>
-                    <div className="col-md-6">
                     </div>
                 </div>
             </div>

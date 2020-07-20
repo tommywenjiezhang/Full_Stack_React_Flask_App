@@ -7,7 +7,6 @@ const cities = (state=citiesInitialState, action) => {
     switch (action.type) {
         case GET_ALL_CITIES:
             const {cities} = action.payload;
-            console.log(cities)
             return {
                 ...state,
                 cities: [...state.cities, ...cities]

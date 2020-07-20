@@ -2,11 +2,16 @@ import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from "react-redux";
 import {create_city} from "../../../redux/action/cityAction/City";
+import { Redirect } from 'react-router-dom'
 
 class CityForm extends Component {
     constructor(formProps) {
         super(formProps);
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.state = {
+            redirectToNewPage: false
+        }
+
     }
     renderInput({input,label}){
         return (
@@ -20,12 +25,17 @@ class CityForm extends Component {
     handleSubmit(formValues){
        let errors =  validateForm(formValues)
        this.props.create_city(formValues)
+        this.setState({redirectToNewPage: true})
     }
 
 
 
     render() {
         const{handleSubmit } = this.props
+        if (this.state.redirectToNewPage) {
+             return (
+             <Redirect to="/"/>)
+        }
         return (
             <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
                 <Field  name="lat" component={this.renderInput} label="lat"/>

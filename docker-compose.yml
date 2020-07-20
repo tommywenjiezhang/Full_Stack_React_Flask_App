@@ -30,8 +30,8 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     volumes:
-      - /client/node_modules
       - ./client:/app
+      - /client/node_modules
     ports:
       - "3000:3000"
     stdin_open: true
