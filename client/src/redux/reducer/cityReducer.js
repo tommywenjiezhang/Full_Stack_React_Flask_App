@@ -1,4 +1,4 @@
-import {FETCH_CITY_IMAGE, GET_ALL_CITIES, SELECT_CITY, DELETE_CITY, ADD_CITY} from "../action/actionType";
+import {FETCH_CITY_IMAGE, GET_ALL_CITIES, SELECT_CITY, DELETE_CITY, ADD_CITY} from "../action/cityAction/actionType";
 
 const citiesInitialState = {
     cities:[]

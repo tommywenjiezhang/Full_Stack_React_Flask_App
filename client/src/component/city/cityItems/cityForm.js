@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from "react-redux";
-import {create_city} from "../../redux/action/City";
+import {create_city} from "../../../redux/action/cityAction/City";
 
 class CityForm extends Component {
     constructor(formProps) {

@@ -1,25 +1,12 @@
-import {FETCH_CITY_IMAGE, GET_ALL_CITIES, SELECT_CITY,DELETE_CITY, ADD_CITY } from "./actionType";
-import axios from 'axios';
-import _ from 'lodash'
 import * as CityActionCreator from "./actionCreator";
-
-
-const citiesRequestInstance = axios.create({baseURL:"http://localhost:8081/"})
+import _ from "lodash";
+import axios from "axios";
+import {cityApi} from "../../../api/cityApi";
 
 const _get_all_cities = async (dispatch) => {
-    const citiesResponse = await citiesRequestInstance.get("/api/cities/")
+    const citiesResponse = await cityApi.get("/api/cities/")
     dispatch(CityActionCreator.getAllCities(citiesResponse.data))
 }
-
-
-export const get_all_cities = () => dispatch => _get_all_cities(dispatch)
-export const get_single_city = (city) => CityActionCreator.getSingleCity(city)
-export const get_city_image = cityName => dispatch => _fetchGetCityImage(cityName,dispatch)
-export const delete_city = city_id => dispatch => _delete_city(city_id,dispatch)
-export const create_city = city => dispatch => _create_city(city,dispatch)
-
-
-
 
 const _delete_city = _.memoize(async (city_id, dispatch) => {
     const response = await axios.delete("/api/cities/" + city_id)
@@ -47,3 +34,4 @@ const _fetchGetCityImage = _.memoize(async (cityName,dispatch) => {
         dispatch(CityActionCreator.cityImage(url))
 })
 
+export {_get_all_cities, _delete_city, _create_city, _fetchGetCityImage}

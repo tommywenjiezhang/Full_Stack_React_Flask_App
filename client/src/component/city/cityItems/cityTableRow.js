@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import {get_single_city, delete_city} from "../../redux/action/City"
+import {get_single_city, delete_city} from "../../../redux/action/cityAction/City"
 
 const CityTableRow = (props) => {
     const {city,key,get_single_city, delete_city} = props;

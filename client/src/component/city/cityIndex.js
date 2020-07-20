@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {get_all_cities} from '../redux/action/City'
+import {get_all_cities} from '../../redux/action/cityAction/City'
 import CityTable from "./cityItems/cityTable";
 import CityView from "./cityItems/cityView";
 import CityForm from "./cityItems/cityForm";

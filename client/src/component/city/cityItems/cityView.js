@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {get_city_image,delete_city} from "../../redux/action/City"
+import {get_city_image,delete_city} from "../../../redux/action/cityAction/City"
 import CityMap from "./cityMap";
 
 class CityView extends Component {
