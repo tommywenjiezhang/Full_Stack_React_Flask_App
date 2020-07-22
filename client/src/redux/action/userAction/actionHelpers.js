@@ -1,13 +1,14 @@
-import {loginError, loginUser} from "./actionCreator";
+import {loginError, loginUser, registerUser} from "./actionCreator";
 import {userApi} from "../../../api/userApi"
-import * as UserActionCreator from './actionCreator'
+import history from "../../../history";
+import _ from 'lodash'
 
 const _user_login = async (dispatch, user) => {
 
     try{
         const response = await userApi.post("/auth", user)
         if(response.data.message){
-        dispatch(UserActionCreator.loginError(response.data))
+        dispatch(loginError(response.data))
         }
         else{
         localStorage.setItem("token", response.data.access_token)
@@ -23,7 +24,8 @@ const _user_login = async (dispatch, user) => {
         const userObject = await res.json()
         console.log(userObject)
         if(userObject){
-            dispatch(UserActionCreator.loginUser(userObject))
+            dispatch(loginUser(userObject))
+            history.push("/")
         }
         }
     }catch (error) {
@@ -31,8 +33,19 @@ const _user_login = async (dispatch, user) => {
             dispatch(loginError({msg:"user enter wrong credential"}))
         }
     }
-
-
 }
 
-export {_user_login}
+const _user_register = async (dispatch,user) => {
+    try{
+        const response = await userApi.post("/register",user)
+        if(response.data){
+            const {message} = response.data
+            dispatch(registerUser(_.pick(user,['name','username','email'])))
+        }
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export {_user_login,_user_register}

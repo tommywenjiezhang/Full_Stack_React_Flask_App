@@ -1,8 +1,9 @@
-import {LOGIN_ERROR, LOGIN_USER} from '../action/userAction/actionType'
+import {LOGIN_ERROR, LOGIN_USER, REGISTER_USER} from '../action/userAction/actionType'
 
 const userInitialState = {
     user:{},
-    errors:{}
+    errors:{},
+    newUser:{}
 }
 const user = (state=userInitialState, action) =>{
     switch (action.type) {
@@ -17,6 +18,13 @@ const user = (state=userInitialState, action) =>{
             return{
                 ...state,
                 errors: {...state.errors,...error}
+            }
+        case REGISTER_USER:
+            const userObj = action.payload
+            console.log(userObj)
+            return{
+                ...state,
+                newUser:{...userObj}
             }
         default:
             return {...state}

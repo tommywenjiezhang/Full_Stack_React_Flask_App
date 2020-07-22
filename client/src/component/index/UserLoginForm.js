@@ -28,7 +28,7 @@ class UserLoginForm extends Component {
              <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                  <Field  name="username" component={this.renderInput} label="username"/>
                  <Field name='password' component={this.renderInput} label="password" />
-                 <button type="submit">Submit</button>
+                 <button className='btn btn-success' type="submit">Submit</button>
             </form>
         );
     }

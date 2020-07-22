@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from "react-redux";
 import {create_city} from "../../../redux/action/cityAction/City";
-import { Redirect } from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 class CityForm extends Component {
     constructor(formProps) {

@@ -27,7 +27,7 @@ class Header extends Component {
                 <button onClick={this.toggleNavbar} className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
                 </button>
-                <Navbar.Brand href="#home">City App</Navbar.Brand>
+                <Navbar.Brand href="/">City App</Navbar.Brand>
                 <Collapse in={this.state.collapsed} id="navbarResponsive">
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
@@ -38,7 +38,10 @@ class Header extends Component {
                                 <Nav.Link href="/new" eventKey="create">create new city</Nav.Link>
                             </Nav.Item>
                             <Nav.Item className="nav-item">
-                                <Nav.Link eventKey="login">home</Nav.Link>
+                                <Nav.Link href="/login" eventKey="login">login</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item className="nav-item">
+                                <Nav.Link href="/register" eventKey="register">register</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>

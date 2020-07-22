@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form'
 import {connect} from 'react-redux';
-
-function mapStateToProps(state) {
-    return {};
-}
+import {Link} from "react-router-dom";
 
 
 class UserRegisterForm extends Component {
@@ -24,6 +21,7 @@ class UserRegisterForm extends Component {
     onSubmit = (formValues) => {
         this.props.onSubmit(formValues)
     }
+
     render() {
         return (
              <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
@@ -32,6 +30,8 @@ class UserRegisterForm extends Component {
                  <Field name='name' component={this.renderInput} label="name" />
                  <Field name='email' component={this.renderInput} label='email' />
                  <Field name='phone' component={this.renderInput} label='phone' />
+                 <button className='btn btn-success' type="submit">Submit</button>
+                 <Link to="/" >Go back home </Link>
             </form>
         );
     }

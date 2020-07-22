@@ -1,4 +1,4 @@
-import {LOGIN_ERROR, LOGIN_USER} from "./actionType";
+import {LOGIN_ERROR, LOGIN_USER, REGISTER_USER} from "./actionType";
 
 
 export const loginUser = userObj => ({
@@ -12,3 +12,8 @@ export const loginError = errorObject => ({
     payload: errorObject
 })
 
+export const registerUser = user => ({
+    type: REGISTER_USER,
+    payload: user
+
+})

@@ -13,9 +13,8 @@ class UserLogin extends Component {
     onSubmit = (formValues) => {
         this.props.userPostFetch(formValues)
     }
+
     render() {
-        const {user} = this.props
-        console.log(user)
         return (
             <div className="col-lg-10 offset-md-1">
                 <h1>Login a User</h1>

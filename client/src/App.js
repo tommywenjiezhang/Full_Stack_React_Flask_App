@@ -8,6 +8,7 @@ import history  from "./history";
 import CityEdit from "./component/city/cityItems/cityEdit";
 import Header from "./component/partial/Header";
 import UserLogin from "./component/index/user/userLogin";
+import UserRegister from "./component/index/user/userRegister";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                   <Route path="/new" exact component={CityCreate} />
                   <Route path="/edit/:id" exact component={CityEdit} />
                   <Route path="/login" exact component={UserLogin} />
+                  <Route path="/register" exact component={UserRegister} />
                 </Switch>
             </Router>
       </Provider>
