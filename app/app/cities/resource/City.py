@@ -29,6 +29,7 @@ class CityRoute(Resource):
 
     def put(self, id):
         data = CityRoute.parser.parse_args()
+        print(data)
         city = City.findById(id)
 
         if city:

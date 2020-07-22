@@ -4,15 +4,19 @@ import {get_all_cities} from '../../redux/action/cityAction/City'
 import CityTable from "./cityItems/cityTable";
 import CityView from "./cityItems/cityView";
 
-
 class CityIndex extends Component {
     constructor(props) {
         super(props);
+        this.tableRef = React.createRef();
+
     }
 
     componentDidMount() {
         console.log("city index mounted");
         this.props.get_all_cities();
+    }
+    componentDidUpdate() {
+
     }
 
 
@@ -21,10 +25,10 @@ class CityIndex extends Component {
         return (
             <div className="row">
                     <div className="col-lg-4 offset-lg-1">
-                    <CityTable cities={cities && cities.length > 0 ? cities : [{cityName: "No City Yet"}]}/>
+                    <CityTable ref={el => this.el = el} cities={cities && cities.length > 0 ? cities : [{cityName: "No City Yet"}]}/>
                 </div>
                 <div className="col-lg-4 offset-lg-2">
-                    <CityView/>
+                    <CityView />
                 </div>
             </div>
         );

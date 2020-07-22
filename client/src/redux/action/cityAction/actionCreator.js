@@ -1,4 +1,4 @@
-import {ADD_CITY, DELETE_CITY, FETCH_CITY_IMAGE, GET_ALL_CITIES, SELECT_CITY} from "./actionType";
+import {ADD_CITY, DELETE_CITY, FETCH_CITY_IMAGE, GET_ALL_CITIES, SELECT_CITY, EDIT_CITY,FETCH_SINGLE_CITY} from "./actionType";
 
 export const getAllCities= (cities) => {
     return {
@@ -34,6 +34,23 @@ export const addCity = (city) => {
         type:ADD_CITY,
         payload: {
             city
+        }
+    }
+}
+
+export const editCity = (response) => {
+    return { type: EDIT_CITY,
+        payload: {
+            response:response.data
+        }
+    }
+}
+
+export const fetchSingleCity = (city)=>{
+    return {
+        type: FETCH_SINGLE_CITY,
+        payload:{
+            city:city.data
         }
     }
 }

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {get_city_image,delete_city} from "../../../redux/action/cityAction/City"
 import CityMap from "./cityMap";
+import {cityImage} from "../../../redux/action/cityAction/actionCreator";
+import '../cityAsset/noavailable.jpeg'
 
 class CityView extends Component {
     constructor(props) {
@@ -18,18 +20,29 @@ class CityView extends Component {
 
     }
     renderCityImage() {
-         const {city} = this.props.city ? this.props : {city: {cityName: "New York"}}
+         const {city} = this.props.city ? this.props : {city: null}
          if(city.cityName && city.cityName.length > 0){
          this.props.get_city_image(city.cityName);
          }
     }
 
     render() {
-        const {city} = this.props.city ? this.props : {city: {cityName: "New York"}}
+        const {city} = this.props.city ? this.props : {city: null}
         const {cityImage:{url}} = this.props.cityImage ? this.props : {cityImage:{url:'../cityAsset/noavailable.jpeg'}}
-        console.log(city.id)
-        return (
-            <div className="card">
+        if (!checkIfCityAvailable(city)){
+            return (
+                <div className="card mt-2">
+                <div className='row'>
+                    <div className="col-md-12">
+                        <img className="img-fluid" src={require("../cityAsset/noavailable.jpeg")}/>
+                        <h1 className="card-title">Loading</h1>
+                    </div>
+                </div>
+            </div>)
+        }
+        else{
+            return (
+            <div className="card mt-2">
                 <div className='row'>
                     <div className="col-md-12">
                         <img className="img-fluid" src={url}/>
@@ -38,9 +51,17 @@ class CityView extends Component {
                 </div>
             </div>
         );
+        }
     }
 }
-
+const checkIfCityAvailable = (cityImage) =>{
+    if(cityImage){
+        return true
+    }
+    else{
+        return false
+    }
+}
 const mapStateToProps = ({cities,response}) => {
     const {city, cityImage} = cities;
     console.log(response)

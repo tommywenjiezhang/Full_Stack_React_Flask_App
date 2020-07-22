@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import {get_single_city, delete_city} from "../../../redux/action/cityAction/City"
+import { Link } from 'react-router-dom';
 
 const CityTableRow = (props) => {
     const {city,key,get_single_city, delete_city} = props;
@@ -22,6 +23,11 @@ const CityTableRow = (props) => {
                 }}>
                     <input type="submit" value="delete" className="btn btn-danger"/>
                 </form>
+            </td>
+            <td>
+                  <Link to={`/edit/${city.id}`} className="btn btn-secondary">
+                    Edit
+                 </Link>
             </td>
         </tr>
     );

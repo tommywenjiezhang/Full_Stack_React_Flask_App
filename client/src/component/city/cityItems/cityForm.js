@@ -24,20 +24,20 @@ class CityForm extends Component {
     }
     handleSubmit(formValues){
        let errors =  validateForm(formValues)
-       this.props.create_city(formValues)
-        this.setState({redirectToNewPage: true})
+
     }
 
 
-
+     onSubmit = formValues => {
+        this.props.onSubmit(formValues);
+    };
     render() {
-        const{handleSubmit } = this.props
         if (this.state.redirectToNewPage) {
              return (
              <Redirect to="/"/>)
         }
         return (
-            <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+            <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                 <Field  name="lat" component={this.renderInput} label="lat"/>
                 <Field name="lng" component={this.renderInput} label="lng"/>
                 <Field name="abbreviation" component={this.renderInput} label="abbreviaton"/>
@@ -65,5 +65,4 @@ const  validateForm = (values) => {
     return errors
 }
 
-const formWrapper = reduxForm({form:'city'})(CityForm)
-export default connect(null, {create_city})(formWrapper)
+export default reduxForm({form:'city',validateForm})(CityForm)

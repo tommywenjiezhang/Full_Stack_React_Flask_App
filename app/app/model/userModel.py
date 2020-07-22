@@ -34,12 +34,16 @@ class UserModel(db.Model):
         return cls.query.filter_by(id=_id).first()
 
     def json(self):
-        return json.dumps(UserSchema.dump(self))
+        schema = UserSchema()
+        return json.dumps(schema.dump(self))
+
+    def profile(self):
+        return {'name':self.name, 'username':self.username,'phone':self.phone, 'email':self.email}
 
 class UserSchema(Schema):
-    id = fields.Integer
-    username = fields.String
-    password = fields.String
-    email = fields.String
-    phone = fields.Integer
-    name = fields.String
+    id = fields.Integer()
+    username = fields.String()
+    password = fields.String()
+    email = fields.String()
+    phone = fields.Integer()
+    name = fields.String()

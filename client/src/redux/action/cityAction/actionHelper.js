@@ -2,6 +2,7 @@ import * as CityActionCreator from "./actionCreator";
 import _ from "lodash";
 import axios from "axios";
 import {cityApi} from "../../../api/cityApi";
+import history from "../../../history";
 
 const _get_all_cities = async (dispatch) => {
     const citiesResponse = await cityApi.get("/api/cities/")
@@ -20,6 +21,7 @@ const _create_city = _.memoize(async (city,dispatch) => {
         ...city
     })
     dispatch(CityActionCreator.addCity(cityPostRes))
+    history.push("/")
 })
 
 const _fetchGetCityImage = _.memoize(async (cityName,dispatch) => {
@@ -34,4 +36,15 @@ const _fetchGetCityImage = _.memoize(async (cityName,dispatch) => {
         dispatch(CityActionCreator.cityImage(url))
 })
 
-export {_get_all_cities, _delete_city, _create_city, _fetchGetCityImage}
+const _edit_city = async(city_id,formValues, dispatch) => {
+    const response = await cityApi.put(`/api/cities/${city_id}`,formValues)
+    dispatch(CityActionCreator.editCity(response))
+    window.location.reload()
+}
+
+const _fetchSingleCity = async(city_id, dispatch) => {
+    const response = await cityApi.get(`/api/cities/${city_id}`)
+    dispatch(CityActionCreator.fetchSingleCity(response))
+}
+
+export {_get_all_cities, _delete_city, _create_city, _fetchGetCityImage, _edit_city, _fetchSingleCity}

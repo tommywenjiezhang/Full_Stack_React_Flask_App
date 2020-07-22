@@ -1,4 +1,11 @@
-import {FETCH_CITY_IMAGE, GET_ALL_CITIES, SELECT_CITY, DELETE_CITY, ADD_CITY} from "../action/cityAction/actionType";
+import {
+    FETCH_CITY_IMAGE,
+    GET_ALL_CITIES,
+    SELECT_CITY,
+    DELETE_CITY,
+    ADD_CITY,
+    FETCH_SINGLE_CITY
+} from "../action/cityAction/actionType";
 
 const citiesInitialState = {
     cities:[]
@@ -12,7 +19,7 @@ const cities = (state=citiesInitialState, action) => {
                 cities: [...state.cities, ...cities]
             };
         case SELECT_CITY:
-            const {city} = action.payload;
+            var {city} = action.payload;
             return{
                 ...state,
                 city:{...state.city,...city}
@@ -37,11 +44,18 @@ const cities = (state=citiesInitialState, action) => {
             }
         case ADD_CITY:
             const {cityPostRes} = action.payload;
-            console.log(cityPostRes)
             return{
                 ...state,
                 response: {
                     ...cityPostRes
+                }
+            }
+        case FETCH_SINGLE_CITY:
+            var {city} = action.payload
+            return{
+                ...state,
+                city:{
+                    ...city
                 }
             }
         default:
