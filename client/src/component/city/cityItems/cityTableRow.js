@@ -13,7 +13,7 @@ const CityTableRow = (props) => {
     return (
         <tr key = {key} onClick={() => get_single_city(city)}  >
             <td >{city.id}</td>
-            <td contentEditable={true}  >{city.cityName}</td>
+            <td >{city.cityName}</td>
             <td>{city.country}</td>
             <td>{city.abbreviation}</td>
             <td>{city.population}</td>

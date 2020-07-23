@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { connect } from "react-redux";
-import {create_city} from "../../../redux/action/cityAction/City";
-import {Link, Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
+import * as Validation from '../../validation'
+import '../cityAsset/style.css'
 
 class CityForm extends Component {
     constructor(formProps) {
@@ -13,17 +13,17 @@ class CityForm extends Component {
         }
 
     }
-    renderInput({input,label}){
+    renderInput({input,label,meta: { touched, error, warning } }){
         return (
             <div className="form-group">
                 <label >{label}</label>
                 <input className="form-control" {...input}/>
+                {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
             </div>
 
         )
     }
     handleSubmit(formValues){
-       let errors =  validateForm(formValues)
 
     }
 
@@ -32,37 +32,27 @@ class CityForm extends Component {
         this.props.onSubmit(formValues);
     };
     render() {
+        const {required, geocode, maxLength,number} = Validation
         if (this.state.redirectToNewPage) {
              return (
              <Redirect to="/"/>)
         }
         return (
             <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                <Field  name="lat" component={this.renderInput} label="lat"/>
-                <Field name="lng" component={this.renderInput} label="lng"/>
-                <Field name="abbreviation" component={this.renderInput} label="abbreviaton"/>
-                <Field name="capital" component={this.renderInput} label="capital"/>
-                <Field name="cityName" component={this.renderInput} label="cityName"/>
-                <Field name="country" component={this.renderInput} label="country"/>
-                <Field name="population" component={this.renderInput} label="population"/>
-                <button type="submit">Submit</button>
+                <Field  name="lat" component={this.renderInput} label="lat" validate={[required,geocode]}/>
+                <Field name="lng" component={this.renderInput} label="lng" validate={[required,geocode]}/>
+                <Field name="abbreviation" component={this.renderInput} label="abbreviaton" validate={[required,maxLength(3)]}/>
+                <Field name="capital" component={this.renderInput} label="capital" validate={[required]}/>
+                <Field name="cityName" component={this.renderInput} label="cityName" validate={[required]}/>
+                <Field name="country" component={this.renderInput} label="country" validate={[required]}/>
+                <Field name="population" component={this.renderInput} label="population" validate={[required,number]}/>
+                <button type="submit" className="btn btn-success">Submit</button>
             </form>
         );
     }
 
 }
 
-const  validateForm = (values) => {
-    const errors = {}
-    const cityProperty = ["lat","lng","abbreviation","capital","cityName","country","population"]
-    for(var key of cityProperty){
-        console.log(values[key])
-        if(!values[key]){
-            errors.messages = key + " cannot be empty"
-            return errors
-        }
-    }
-    return errors
-}
 
-export default reduxForm({form:'city',validateForm})(CityForm)
+export default reduxForm({form:'city'
+})(CityForm)

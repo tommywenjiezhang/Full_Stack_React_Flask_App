@@ -14,7 +14,7 @@ class CityCreate extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-lg-10 offset-md-1">
+                <div className="col-lg-10 col-md-10 col-sm-10 offset-sm-1 offset-md-1">
                     <h1>Create a new City</h1>
                     < CityForm onSubmit={this.onSubmit} />
                 </div>

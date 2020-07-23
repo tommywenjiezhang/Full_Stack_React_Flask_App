@@ -1,0 +1,7 @@
+.btn-success{
+    display: inline-block;
+    width: 100%;
+}
+tr:hover{
+    background-color: #E0E1E7;
+}

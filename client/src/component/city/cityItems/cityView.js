@@ -31,7 +31,7 @@ class CityView extends Component {
         const {cityImage:{url}} = this.props.cityImage ? this.props : {cityImage:{url:'../cityAsset/noavailable.jpeg'}}
         if (!checkIfCityAvailable(city)){
             return (
-                <div className="card mt-2">
+                <div className="card mt-2 text-center">
                 <div className='row'>
                     <div className="col-md-12">
                         <img className="img-fluid" src={require("../cityAsset/noavailable.jpeg")}/>
@@ -42,11 +42,11 @@ class CityView extends Component {
         }
         else{
             return (
-            <div className="card mt-2">
+            <div className="card mt-2 text-center">
                 <div className='row'>
                     <div className="col-md-12">
                         <img className="img-fluid" src={url}/>
-                        <h1 className="card-title">{city.cityName}</h1>
+                        <h1 className="card-title mt-1 mb-2">{city.cityName}</h1>
                     </div>
                 </div>
             </div>
