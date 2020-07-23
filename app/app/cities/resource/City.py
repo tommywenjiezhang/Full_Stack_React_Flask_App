@@ -23,8 +23,12 @@ class CityRoute(Resource):
     def delete(self, id):
         city = City.findById(id)
         if city:
+            schema = CitySchema()
+            deletedCity = schema.dump(city)
+            message = {'message': 'Item deleted.'}
+            mergeObj = {**message, **deletedCity}
             city.delete_from_db()
-            return {'message': 'Item deleted.'}
+            return Response(response=json.dumps(mergeObj), status=200, mimetype="application/json")
         return Response(response={'message': 'Item not found.'}, status=404, mimetype="application/json")
 
     def put(self, id):

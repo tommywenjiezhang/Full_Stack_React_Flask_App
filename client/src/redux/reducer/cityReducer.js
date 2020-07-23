@@ -8,7 +8,8 @@ import {
 } from "../action/cityAction/actionType";
 
 const citiesInitialState = {
-    cities:[]
+    cities:[],
+    response:{}
 }
 const cities = (state=citiesInitialState, action) => {
     switch (action.type) {
@@ -35,12 +36,9 @@ const cities = (state=citiesInitialState, action) => {
             }
         case DELETE_CITY:
             const {response} = action.payload;
-            console.log(response)
             return{
                 ...state,
-                response: {
-                    ...response
-                }
+                response: {...state.response, ...response}
             }
         case ADD_CITY:
             const {cityPostRes} = action.payload;

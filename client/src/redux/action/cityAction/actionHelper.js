@@ -11,7 +11,8 @@ const _get_all_cities = async (dispatch) => {
 
 const _delete_city = _.memoize(async (city_id, dispatch) => {
     const response = await axios.delete("/api/cities/" + city_id)
-    dispatch(CityActionCreator.deleteCity(response))
+    dispatch(CityActionCreator.deleteCity(response.data))
+    history.push('/')
 })
 
 const _create_city = _.memoize(async (city,dispatch) => {
