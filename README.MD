@@ -1,8 +1,8 @@
 # Full Stack Flask App
 
-##Overview
+## Overview
 This project implements a full stack REST-based web Application with Docker, Flask, React, Redux, Mysql, and Nginx.
-##Get Started
+## Get Started
 ```
 docker-compose up --build
 ```
@@ -19,7 +19,7 @@ and go to http://localhost:8081/
 
 ![Register](./screenshots/register.png)
 ### Login
-![Login](./screenshots/login.png)
+![Login](./screenshots/Login.png)
 
 ## Project Detail 
 The project use Nginx as reverse proxy server, which connects the api server on localhost:5000 and client server on localhost:3000. By simply visiting the localhost:8081, you can access the entire application.
