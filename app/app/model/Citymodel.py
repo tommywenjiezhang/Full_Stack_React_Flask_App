@@ -41,6 +41,11 @@ class City(db.Model):
         cityJson = json.dumps(city)
         return cityJson
 
+    def schema(self):
+        schema = CitySchema()
+        return schema.dumps(self)
+    def snapshot(self):
+        return {"cityName":self.cityName}
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()

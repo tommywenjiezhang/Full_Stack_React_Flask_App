@@ -44,7 +44,10 @@ class CityRoute(Resource):
         else:
             city = City(**data)
         city.save_to_db()
-        return Response(response=city.json(), status=200, mimetype="application/json")
+        message = {"message":"city has successfully modified"}
+        cityObj = json.loads(city.json())
+        mergeObj = {**message, **cityObj}
+        return Response(response=json.dumps(mergeObj), status=200, mimetype="application/json")
 
 
 
@@ -71,5 +74,7 @@ class CitiesRoute(Resource):
             city.save_to_db()
         except:
             return {"message": "An error occurred inserting the item."}
-        cityJson = city.json()
-        return Response(response=cityJson, status=200, mimetype="application/json")
+        cityObj = city.snapshot()
+        message = {"message":"the city has successfully created"}
+        mergeObj = {**cityObj,**message}
+        return Response(response=json.dumps(mergeObj), status=200, mimetype="application/json")
