@@ -22,13 +22,13 @@ and go to http://localhost:8081/
 ![Login](./screenshots/Login.png)
 
 # Api 
-##POST
+## POST
 ![POST](./screenshots/api/post.png)
-##GET
+## GET
 ![GET](./screenshots/api/get.png)
-##DELETED
+## DELETED
 ![DELETED](./screenshots/api/deleted.png)
-##PUT
+## PUT
 ![PUT](./screenshots/api/edit.png)
 
 ## Project Detail 
